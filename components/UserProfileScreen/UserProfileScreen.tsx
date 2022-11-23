@@ -1,14 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import NavigateButtons from '../NavigateButtons';
 
-const UserProfileScreen = ({ navigation }: any) => {
+const UserProfileScreen = () => {
   return(
     <>
-      <NavigateButtons navigation={navigation} />
       <View style={styles.container}>
-        <Text> User avatar </Text>
-        <Text> User name </Text>
+        <Text> Настройки какие-нибудь </Text>
       </View>
     </>
   )
