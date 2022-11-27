@@ -1,32 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native';
-import HomeScreen from './components/HomeScreen';
+import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import UsersListScreen from './components/UsersListScreen';
-import AboutUsScreen from './components/AboutUsScreen';
-import UserProfileScreen from './components/UserProfileScreen';
-
+import ProductList from "./components/ProductList";
+import ProductCard from "./components/ProductCard";
+import Cart from "./components/Cart";
+import Favorite from "./components/Favorite";
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+const AppTodo = observer(() => {
   return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="UserList" component={UsersListScreen} />
-          <Stack.Screen name="AboutUs" component={AboutUsScreen} />
-          <Stack.Screen name="UserProfile" component={UserProfileScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home">
+          {props => <ProductList {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="ProductCard">
+          {props => <ProductCard {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Cart">
+          {props => <Cart {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Favorite">
+          {props => <Favorite {...props} />}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  },
-});
+export default AppTodo;
